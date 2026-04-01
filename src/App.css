@@ -1,0 +1,24 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   APP STYLES - Main Application Styles
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.app {
+  position: relative;
+  min-height: 100vh;
+}
+
+.app--loading {
+  overflow: hidden;
+}
+
+/* Main content wrapper */
+.app__main {
+  position: relative;
+}
+
+/* Smooth scroll behavior handled by CSS when not using JS */
+@media (prefers-reduced-motion: no-preference) {
+  .app {
+    scroll-behavior: smooth;
+  }
+}

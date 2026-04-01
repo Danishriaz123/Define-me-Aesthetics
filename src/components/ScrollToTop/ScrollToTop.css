@@ -1,0 +1,63 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   SCROLL TO TOP BUTTON
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.scroll-to-top {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.scroll-to-top--visible {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-to-top__button {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--clr-secondary);
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--bg-dark);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+  box-shadow: var(--shadow-gold);
+}
+
+.scroll-to-top__button:hover {
+  transform: scale(1.1);
+  box-shadow: var(--shadow-gold-lg);
+}
+
+.scroll-to-top__button svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+  .scroll-to-top {
+    bottom: 15px;
+    right: 15px;
+  }
+
+  .scroll-to-top__button {
+    width: 44px;
+    height: 44px;
+  }
+
+  .scroll-to-top__button svg {
+    width: 18px;
+    height: 18px;
+  }
+}

@@ -1,0 +1,90 @@
+/* ═══════════════════════════════════════════════════════════════════════════
+   CustomCursor Component Styles
+   ═══════════════════════════════════════════════════════════════════════════ */
+
+.custom-cursor {
+  position: fixed;
+  pointer-events: none;
+  z-index: 9998;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  will-change: transform;
+  transform: translate(-50%, -50%);
+}
+
+.custom-cursor--visible {
+  opacity: 1;
+}
+
+/* Outer Ring */
+.custom-cursor--ring {
+  width: 40px;
+  height: 40px;
+  border: 1px solid var(--clr-secondary);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  mix-blend-mode: difference;
+  transition: width 0.4s var(--ease-out-expo),
+              height 0.4s var(--ease-out-expo),
+              opacity 0.3s ease,
+              background-color 0.3s ease,
+              border-color 0.3s ease;
+}
+
+/* Inner Dot */
+.custom-cursor--dot {
+  width: 6px;
+  height: 6px;
+  background: var(--clr-secondary);
+  border-radius: 50%;
+  transition: opacity 0.3s ease,
+              transform 0.3s ease;
+}
+
+/* Hover State */
+.custom-cursor--ring.custom-cursor--hover {
+  width: 60px;
+  height: 60px;
+  opacity: 0.5;
+  border-color: var(--clr-accent-light);
+}
+
+.custom-cursor--dot.custom-cursor--hover {
+  opacity: 0;
+  transform: translate(-50%, -50%) scale(0);
+}
+
+/* Image/Gallery Hover State */
+.custom-cursor--ring.custom-cursor--view {
+  width: 80px;
+  height: 80px;
+  background: var(--clr-secondary);
+  border-color: var(--clr-secondary);
+  mix-blend-mode: normal;
+  opacity: 0.9;
+}
+
+.custom-cursor__text {
+  font-family: var(--font-body);
+  font-size: 0.65rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--bg-dark);
+}
+
+/* Hide on touch devices */
+@media (pointer: coarse) {
+  .custom-cursor {
+    display: none !important;
+  }
+}
+
+/* Hide on small screens */
+@media (max-width: 1024px) {
+  .custom-cursor {
+    display: none !important;
+  }
+}

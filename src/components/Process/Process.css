@@ -1,0 +1,225 @@
+/* ══════════════════════════════════════════════════════════════════════════
+   PROCESS SECTION - Treatment Journey Timeline
+   ══════════════════════════════════════════════════════════════════════════ */
+
+.process {
+  background: var(--bg-white);
+  padding: var(--space-section) 0;
+  overflow: hidden;
+}
+
+.process__container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
+}
+
+/* ── Header ── */
+.process__header {
+  text-align: center;
+  margin-bottom: var(--space-3xl);
+}
+
+.process__label {
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-caption);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--clr-secondary);
+  margin-bottom: var(--space-md);
+}
+
+.process__label::before {
+  content: '';
+  width: 30px;
+  height: 1px;
+  background: var(--clr-secondary);
+}
+
+.process__title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: var(--fs-h2);
+  font-weight: 500;
+  color: var(--text-dark);
+  letter-spacing: 0.03em;
+  line-height: 1.15;
+  margin-bottom: var(--space-sm);
+}
+
+.process__subtitle {
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-body);
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+/* ── Timeline ── */
+.process__timeline {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  gap: var(--space-lg);
+}
+
+/* Connecting line - Desktop */
+.process__timeline::before {
+  content: '';
+  position: absolute;
+  top: 35px;
+  left: 10%;
+  right: 10%;
+  height: 1px;
+  background: var(--clr-secondary);
+  opacity: 0.3;
+  z-index: 1;
+}
+
+/* ── Step ── */
+.process__step {
+  flex: 1;
+  text-align: center;
+  position: relative;
+  z-index: 2;
+}
+
+.process__step-number {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  background: var(--bg-white);
+  border: 2px solid var(--clr-secondary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto var(--space-lg);
+  font-family: 'Cormorant Garamond', serif;
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  color: var(--clr-secondary);
+  transition: all var(--duration-normal) var(--ease-out-expo);
+}
+
+.process__step:hover .process__step-number {
+  background: var(--clr-secondary);
+  color: var(--bg-white);
+  transform: scale(1.1);
+}
+
+.process__step-icon {
+  width: 50px;
+  height: 50px;
+  margin: 0 auto var(--space-md);
+  color: var(--clr-secondary);
+}
+
+.process__step-icon svg {
+  width: 100%;
+  height: 100%;
+}
+
+.process__step-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: var(--fs-h4);
+  font-weight: 600;
+  color: var(--text-dark);
+  margin-bottom: var(--space-sm);
+}
+
+.process__step-description {
+  font-family: 'DM Sans', sans-serif;
+  font-size: var(--fs-small);
+  color: var(--text-body);
+  line-height: 1.7;
+  max-width: 280px;
+  margin: 0 auto;
+}
+
+/* ── Responsive ── */
+@media (max-width: 1023px) {
+  .process__timeline {
+    flex-direction: column;
+    gap: var(--space-xl);
+    padding-left: var(--space-3xl);
+  }
+
+  /* Vertical line on mobile */
+  .process__timeline::before {
+    top: 0;
+    bottom: 0;
+    left: 35px;
+    right: auto;
+    width: 1px;
+    height: auto;
+  }
+
+  .process__step {
+    text-align: left;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: var(--space-lg);
+    align-items: start;
+  }
+
+  .process__step-number {
+    width: 60px;
+    height: 60px;
+    margin: 0;
+    grid-row: span 2;
+  }
+
+  .process__step-content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .process__step-icon {
+    display: none;
+  }
+
+  .process__step-title {
+    margin-bottom: var(--space-xs);
+  }
+
+  .process__step-description {
+    margin: 0;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 767px) {
+  .process__timeline {
+    padding-left: var(--space-2xl);
+  }
+
+  .process__timeline::before {
+    left: 25px;
+  }
+
+  .process__step-number {
+    width: 50px;
+    height: 50px;
+    font-size: var(--fs-h4);
+  }
+}
+
+/* ── Animation States ── */
+.process__step {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: all var(--duration-slow) var(--ease-out-expo);
+}
+
+.process__step.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.process__step:nth-child(1) { transition-delay: 0s; }
+.process__step:nth-child(2) { transition-delay: 0.15s; }
+.process__step:nth-child(3) { transition-delay: 0.3s; }
+.process__step:nth-child(4) { transition-delay: 0.45s; }
